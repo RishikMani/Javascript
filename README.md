@@ -4,5 +4,7 @@ This project is my very first attempt to get my hands dirty with Javascript. The
 
 ## Comments
 
-a. Single line: starts with //
-b. Block comments: starts with /_ and ends with _/. Used at the top of the file or defining a function.
+There are different ways comments can be added in Javascript files.
+
+1. Single line: It starts with `//`.
+2. Block comment: starts with `/*` and ends with `*/`. It is usually used at the top of the file or for defining a function.
