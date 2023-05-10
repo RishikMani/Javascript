@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Example demonstrating for ... in loop</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      const student = {
+        Name: "Rishik Mani Tripathi",
+        Age: 34,
+        Education: "M.Sc",
+      };
+      let studentDetails =
+        "<h2>The details of the student are as follows: </h2>";
+      for (let prop in student) {
+        studentDetails = `${studentDetails}<br/>${prop}: ${student[prop]}<br/>`;
+        document.getElementById("root").innerHTML = studentDetails;
+      }
+    </script>
+  </body>
+</html>
