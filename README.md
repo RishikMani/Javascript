@@ -67,3 +67,19 @@ console.log(name.substring(10, 5));
 ## Data types
 
 Javascript has the following data types: object, undefined, boolean, number, bigint(n), string and symbol. If a variable is declared but no value is assigned to it, it would by default be an undefined type of variable.
+
+## Loop
+
+The looping in Javascript gets a little interesting as we have some unique ways of looping over the values. There are some new loops as follows:
+
+1. for ... in: For this loop I am including an HTML page which shows a small example. Although, this is not extensively used, but could prove very helpful while debugging.
+2. for ... of
+
+```javascript
+const numbers = {1, 2, 3, 4};
+for (let number of numbers) {
+    console.log(number);
+}
+```
+
+This could also be used to iterate over all the characters in a string.
