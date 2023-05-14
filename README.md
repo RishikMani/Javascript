@@ -83,3 +83,77 @@ for (let number of numbers) {
 ```
 
 This could also be used to iterate over all the characters in a string.
+
+## Arrays
+
+Arrays are quite beautiful in Javascript and can contain any data type. An array can have an array as its element as well. If an array is defined by using `const`, the array is immutable but the elements of array are mutable.
+
+```javascript
+const arr = [1, 2, 3];
+arr = [2, 3, 4]; // this would fail, as arr is immutable
+arr[1] = "red"; // this would not break as the elements of the array are mutable
+```
+
+Adding an element to the array in Javascript is kind of really bad.
+
+```javascript
+const arr = [1, 2, 3];
+const arr[10] = 11;  // this will add an element 11 at index 10, but from index 3 to 9 all values would be undefined
+console.log(arr[7]);
+console.log(arr.length);
+```
+
+This array with a lot of undefined elements within is called a sparse array. To delete an element from an array is also a really bad way, where you can assign a new value to the array's length property. If the element to be deleted is somewhere within the array, one could also use `delete` but this would just replace that element with `undefined` and create a sparse array.
+
+```javascript
+const arr = [1, 2, 3, 4, 5, 6];
+console.log(arr.length);
+arr.length = 5; // this would resize the array and the element 6 would be removed
+delete arr[2]; // this would leave an element 'empty' in place of 3
+```
+
+Applying `map()` or any kind of `filter()` on the arrays, applies that function to all of the elements in that array. In mappingarray.html file I have included an example for applying `map` on an array. In very similar way it could also be extended to `filter` function.
+
+## Destructuring Arrays
+
+```javascript
+const student = ["Rishik Mani", "Male", "Tall"];
+let [personName, gender, height] = student;
+```
+
+This way it destructures an array until the array runs out of elements or the square brackets run out of elements.
+
+## Spreading arrays
+
+```javascript
+const cities = ["Delhi", "Mumbai", "Kolkata", "Lucknow", "Gorakhpur"];
+const citiesCopy = cities;
+citiesCopy.push("Noida");
+
+// this would also print Noida, as when we assign an array it does not create a copy, rather refers to the memory location
+console.log(cities);
+
+//to copy the elements of an array, use ...
+const citiesShallowCopy = [...cities, "Noida"];
+```
+
+It is in the similar way, new objects could be copied into another object.
+
+## Making objects using constructor
+
+```javascript
+class Student {
+  constructor(name, gender) {
+    this.name = name;
+    this.gender = gender;
+  }
+}
+
+const student = new Student{'Rishik', 'Male'};
+
+// modifying object using dot notation
+student.name = 'Rishik Mani';
+
+// modifying object using square bracket notation
+student['name'] = 'Rishik Mani';
+```
