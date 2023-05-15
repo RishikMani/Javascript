@@ -157,3 +157,57 @@ student.name = 'Rishik Mani';
 // modifying object using square bracket notation
 student['name'] = 'Rishik Mani';
 ```
+
+## Functions
+
+### Using rest parameters
+
+If the number of arguments being passed to the funtion is not known, one can use a special parameter called as _rest parameter_. The syntax uses the same 3-dot operator.
+
+```javascript
+function sortList(orderBy, ...items) {...}
+sortList('alphabetical', 'arg1', 'arg2', 'arg3');
+```
+
+This creates an array named _list_ inside the function.
+
+### Using the arguments object
+
+Another way to access any number of arguments passed to a function is to use the arguments object.
+
+```javascript
+function sortList() {
+  for (let i = 0; i < arguments.length; i++) {
+    console.log("The argument is ", arguments[i]);
+  }
+}
+```
+
+The arguments object resembles an array but is not an array. It only has access to array's _length_ property.
+
+### Using a callback function
+
+When a function is passed an argument to a function, the function being passed as an argument is called the callback function while the function to which argument is being passed is called as the outer function.
+
+```javascript
+function greetTheUser(name) {
+  return `Hey ${name}, I wish you are doing good!`;
+}
+
+function getTheUser(callback) {
+  let firstName = "Rishik";
+  return callback(firstName);
+}
+
+getTheUser(greetTheUser);
+```
+
+### Setting default parameters
+
+```javascript
+function (firstName='Rishik', lastName='Mani') {
+  ...
+}
+```
+
+The interesting thing about functions in Javascript is that it does not matter where the function has been defined, atleast when you are in the same block (needs a bit correction here). Once the compiler sees call to a function, which has already not been defined, the compiler finds it and brings it to the top. This is called as hoisting.
