@@ -211,3 +211,58 @@ function (firstName='Rishik', lastName='Mani') {
 ```
 
 The interesting thing about functions in Javascript is that it does not matter where the function has been defined, atleast when you are in the same block (needs a bit correction here). Once the compiler sees call to a function, which has already not been defined, the compiler finds it and brings it to the top. This is called as hoisting.
+
+### Defining function expressions
+
+```javascript
+const square = function (number) {
+  return number ** 2;
+};
+
+console.log(square(5));
+```
+
+Unlike function declarations, function expressions are not hoisted.
+
+### Writing anonymous functions as arrow functions
+
+```javascript
+const square = (number) => {
+  return number ** 2;
+};
+
+console.log(square(5));
+```
+
+### Simplifying arrow functions
+
+If the arrow function contains eihter of a single parameter or just a single return statement, it could further be simplified. The `square` arrow function that we already defined, could further be simplified.
+
+```javascript
+const square = (number) => number ** 2;
+```
+
+_In the above snippet, one could remove the parentheses around the parameter, remove the curly brances and drop the keyword return. Althoug, the Javascript prettifier is not letting me drop the parentheses around the parameter_.
+
+Arrow functions do not have an arguments object. If one needs to write an arrow function that takes arbitrary number of arguments it could rather be done using `(...args)`.
+
+## Methods
+
+A function inside an object is called as method.
+
+```javascript
+const student = {
+  firstName: "",
+  lastName: "",
+  fullName: function (firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    console.log(`The full name of the student is ${firstName} ${lastName}.`);
+  },
+};
+
+student.fullName("Rishik", "Mani");
+console.log(`Student's first name is ${_student.firstName}`);
+```
+
+One could also write the method using the method notation, `fullName(firstName, lastName)`.
