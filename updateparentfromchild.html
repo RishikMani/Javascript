@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Passing function to child to update parent</title>
+  </head>
+  <body>
+    <h1>Bookstore</h1>
+    <div id="bookstore"></div>
+    <h1>Your cart</h1>
+    <div id="cart"></div>
+    <script>
+      const bookstore = {
+        books: ["Godan", "Namak ka Daroga", "Swabhimaan"],
+        removeBook(title) {
+          let newList = this.books.filter((book) => book != title);
+          this.books = newList;
+          this.displayBookStore();
+        },
+        displayBookStore() {
+          const bookList = this.books.map((book) => `<p>${book}</p>`);
+          document.getElementById("bookstore").innerHTML = bookList.join("");
+          shoppingCart.displayCart(this.removeBook.bind(this));
+        },
+      };
+
+      const shoppingCart = {
+        itemsInCart: ["Godan"],
+        handleClick(removeBook) {
+          removeBook(this.itemsInCart);
+        },
+        displayCart(clickHandler) {
+          const itemsInCart = this.itemsInCart.map((book) => `<p>${book}</p>`);
+          const checkoutButton = `<button id='checkout'>Checkout</button>`;
+          document.getElementById("cart").innerHTML =
+            itemsInCart.join("") + checkoutButton;
+          document
+            .getElementById("checkout")
+            .addEventListener("click", () => this.handleClick(clickHandler));
+        },
+      };
+      bookstore.displayBookStore();
+    </script>
+  </body>
+</html>

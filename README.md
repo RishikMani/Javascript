@@ -266,3 +266,99 @@ console.log(`Student's first name is ${_student.firstName}`);
 ```
 
 One could also write the method using the method notation, `fullName(firstName, lastName)`.
+
+### Understanding Context and this
+
+```javascript
+const myCar = {
+  speed: 0,
+};
+
+const myTruck = {
+  speed: 0,
+};
+
+function drive(speedLimit) {
+  this.speed = speedLimit;
+}
+```
+
+The point of not having a function as method for similar type of objects is to remove redundancy. Both the car and truck objects have same method of speeding. Rather than having them as two methods in both the objects, one can just write only one function. The problem with `drive` is now, to which object the `this` points to. This could be solved in two ways:
+
+1. Passing an object to the function
+2. Setting the context of the function
+
+#### Passing an object to the function
+
+```javascript
+function drive(vehicle, speedLimit) {
+  vehicle.speed = speedLimit;
+}
+drive(myCar, 50);
+```
+
+#### Setting the context of the function
+
+##### Using call()
+
+```javascript
+drive.call(myCar, 60);
+```
+
+`call()` expects the first argument as the object followed by any additional number of arguments.
+
+##### Using apply()
+
+The apply() method works the same as call() but takes an array as its second parameter, which will be passed to the function that apply() is applied to.
+
+##### Using bind()
+
+```javascript
+const driveMyCarOnTheFreeway = drive.bind(myCar, 80);
+driveMyCarOnTheFreeway();
+```
+
+Rather than return the result of calling the function, bind() returns a new function. This new function could be assigned to a new variable.
+
+### Passing a function from one object to another
+
+```javascript
+const myCar = {
+  speed: 0,
+  operate(speedLimit, callback) {
+    callback(speedLimit);
+    console.log("Inside operate!");
+  },
+};
+
+function drive(speed) {
+  this.speed = speed;
+  console.log("Inside drive!");
+}
+
+myCar.operate(80, drive);
+```
+
+Although, this seems fine, but take a closer look at the `this` inside `drive` function. The `this` keyword would not identify with the `myCar` object, but rather the `window` object. To overcome this, one can simply bind the callback function that is passed to the `operate()` method to the `this` context of the object.
+
+```javascript
+const myCar = {
+  speed: 0,
+  operate(speedLimit, callback) {
+    boundCallback = callback.bind(this);
+    boundCallback(speedLimit);
+    console.log("Inside operate!");
+  },
+};
+
+function drive(speed) {
+  this.speed = speed;
+  console.log("Inside drive!");
+}
+
+myCar.operate(80, drive);
+```
+
+### Passing a function to a child to update parent
+
+For this I created the webpage `updateparentfromchild.html`.
