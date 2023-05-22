@@ -362,3 +362,114 @@ myCar.operate(80, drive);
 ### Passing a function to a child to update parent
 
 For this I created the webpage `updateparentfromchild.html`.
+
+### Chaining functions
+
+As in many other programming languages, one can chain multiple functions to be executed sequentially.
+
+```python
+name = 'rishik mani     '
+print(name.upper().strip())
+```
+
+This way the name first gets converted to uppercase and then the extra white spaces at the end of string are removed. In Javascript, the same happens and the previous function in the sequential call returns a `this` from a method.
+
+```javascript
+const human = {
+  activity: undefined,
+  eat() {
+    this.activity = "eating";
+    return this;
+  },
+  sleep() {
+    this.activity = "sleeping";
+    return this;
+  },
+  thinking() {
+    this.activity = "thinking";
+    return this;
+  },
+};
+```
+
+To make the human think, eat and sleep, one could do
+
+```javascript
+let result = human.thinking();
+let result2 = human.eating(result);
+let result3 = human.sleeping(result2);
+```
+
+This all could just be written concisely in a single statement as
+
+```javascript
+result = human.thinking().eating().sleeping();
+```
+
+## Classes
+
+### Encapsulation
+
+Each object in a program has a set of private data which can only be accessed through that object. e.g. you have a phone which has a property called as battery. You cannot directly access the property and say `Phone.batteryLavel = 100`, but rather one has to plug in the charger which then initiates the functionality to start charging the phone, `Phone.charge()`.
+
+### Abstraction
+
+It simply means hiding the complexities from the user and providing the user a very simple way to interact and get the desired output. e.g. in any machine learning algorith where you need to identify a dog in the image, one just uploads the image and the algorithm takes care of marking the object. You do not neccessarily need to have knowledge about how that algorithm detects a dog.
+
+### Inheritance
+
+An object could inherit multiple properties from other objects. e.g. animals could broadly be defined as animals who have 2 eyes, living organisms, who eat and sleep. Although, the instances could be vastly different from each other. e.g. both dog and sharks are animals, but dogs can bark and sharks can swim. So both the objects can access the parent class `Animal`, yet also have different unique properties.
+
+### Polymorphism
+
+Differnt objects might have the same function but how that function is implemented might defer hugely. e.g. an `Animal` object could have a `move()` function, but a bird flies, dog runs and a fish swims.
+
+```javascript
+class MyClass {}
+```
+
+An important difference between a class and function is that the classes are not hoisted. So if you try to use a class before it has been declared it will throw an error.
+
+```javascript
+const myObject = new MyClass(); // creating a class using class expression
+```
+
+On calling `new` on any class it invokes the constructor of the class. Unless you have a custom constructor written, a default constructor always gets called. `constructor(){}`.
+
+### Derived classes
+
+```javascript
+class Dog extends Animal {}
+```
+
+If the derived class has no constructor but used the `new` keyword, it invokes the parent class contructor.
+
+```javascript
+constructor(...args){
+  super(...args);
+}
+```
+
+### Constructors
+
+```javascript
+class Student {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+}
+
+const myStudent = new Student("Rishik", "Mani");
+```
+
+The constructor in the derived class should have a call to `super()` before any other statements, passing to it the values with which you want to initialize the properties of the parent.
+
+```javascript
+class Dog extends Animal {
+  constructor(eyes, weight, sound) {
+    super(eyes, weight);
+    this.sound = sound;
+  }
+}
+```
