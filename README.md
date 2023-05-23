@@ -473,3 +473,97 @@ class Dog extends Animal {
   }
 }
 ```
+
+### Properties and methods
+
+On looking at the class it very closely looks like an object itself. Although, an object is created from a class. Some other significant differences between class and object is that a class contains contructor and the methods are not separated using a comma.
+
+```javascript
+class Animals {
+  constructor(size, type) {}
+  move() {}
+}
+```
+
+### Overriding methods in a derived class
+
+```javascript
+class Numbers {
+  constructor(num1, num2) {
+    this.num1 = num1;
+    this.num2 = num2;
+  }
+  sum() {
+    console.log(this.num1 + this.num2);
+  }
+}
+
+class Derived extends Numbers {
+  publicField = 0; // this is how a property is defined in a class, it does not need let or var or const keyword
+  constructor(num1, num2, num3) {
+    super(num1, num2);
+    this.num3 = num3;
+  }
+  sum() {
+    console.log("This sum would not be equal to the parent class!");
+    console.log(this.num1 + this.num2 + this.num3);
+  }
+}
+```
+
+Declaring a property (field) inside a class is very similar to an object, but it does not use `var`, `let` or `const` keywords. In Javascript it is a good practice to define all the class properties before the constructor. This ensures that when a class is istantiated, the members (methods or fields) are also accessible in the constructor.
+
+### Private members
+
+```javascript
+class Numbers {
+  #randomNumber;
+  constructor() {}
+  sum() {
+    this.#randomNumber = 5;
+  }
+}
+```
+
+### Static members
+
+```javascript
+class Number {
+  static number = 5;
+}
+let numInstance = new Number();
+```
+
+The above static property can only be accessed using the class itself, `Number.number`. If one tries to access this static property using an instance of the class `numInstance.number`, it will throw an error.
+
+**Note: I was expecting that the private property is also inaccessible from the instance of the class, but that is not the case. Verify it when revising this content.**
+
+## Events
+
+If one has to add event attribute to a lot of HTML elements, it would at some time become very difficult to manage the code. It also violates the separation of concerns rule, that says that HTML and Javascript should be kept separate.
+
+```html
+<button onclick="alert('You clicked this button')">Click</button>
+```
+
+This way of declaring attributes should always be avoided.For this purpose, one can use listening with event handler properties.
+
+```javascript
+const button = document.getElementById("button");
+
+function displayAlertWindow() {
+  alert("Using event handler property!");
+}
+
+button.onclick = displayAlertWindow;
+```
+
+The biggest problem with event handler properties is that it’s impossible to use them to set more than one event of a certain type to an element. Another downside is that each event handler property can be used for only one type of event, and there aren’t built­in event handler attributes for every possible event that can happen.
+
+### Using addEventListener()
+
+it takes two parameters: the event to listen for and a callback function that should run when the event happens on the object.
+
+```javascript
+EventTarget.addEventListener("event", callback, options);
+```
