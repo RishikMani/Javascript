@@ -567,3 +567,19 @@ it takes two parameters: the event to listen for and a callback function that sh
 ```javascript
 EventTarget.addEventListener("event", callback, options);
 ```
+
+The first parameter is the name of the event to listen for. The name does not include the `on` prefix. (Add a MDN link later to possible events). The second parameter is a callback function. This usually is an anonymous function or a function defined outside of the `addEventListener` function call. Remeber not to put `()` on the callback function. The third parameter is the optional `option` object. It can contain any of the following properties:
+a. `capture`: usually set to false.
+b. `once`: it removes the event listener from the element once it has been invoked. It is set to `false` by default.
+c. `passive`: it calls the `preventDefault()` method. This is set to `false` by default.. By setting it to `true` the performance of the user interface could be improved.
+d. `signal`:It takes an `AbortSignal` as its value.This signal consists of call to `abort()` which then removes the event listener from the element.
+
+`addEventListener` is better as compared to the other two methods as one can add more than one event listeners on the same element.
+
+```javascript
+onClick(e){} // The e is called an event object
+```
+
+### Listening on multiple targets
+
+In the eventbubbling.html, there is a div element that contains two buttons, but surprisingly none of the buttons have any event listener. An example could be, there is a form with a button in it, but clicking the button is more interesting for the form rather than the button. As this button is nested within a form this event afer happening at the button would be bubbled up to the element that contains the button. In our case that containing element would be the div. This whole thing is called as event bubbling.
