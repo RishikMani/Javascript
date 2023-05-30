@@ -572,7 +572,8 @@ The first parameter is the name of the event to listen for. The name does not in
 a. `capture`: usually set to false.
 b. `once`: it removes the event listener from the element once it has been invoked. It is set to `false` by default.
 c. `passive`: it calls the `preventDefault()` method. This is set to `false` by default.. By setting it to `true` the performance of the user interface could be improved.
-d. `signal`:It takes an `AbortSignal` as its value.This signal consists of call to `abort()` which then removes the event listener from the element.
+d. `signal`:I
+t takes an `AbortSignal` as its value.This signal consists of call to `abort()` which then removes the event listener from the element.
 
 `addEventListener` is better as compared to the other two methods as one can add more than one event listeners on the same element.
 
@@ -583,3 +584,37 @@ onClick(e){} // The e is called an event object
 ### Listening on multiple targets
 
 In the eventbubbling.html, there is a div element that contains two buttons, but surprisingly none of the buttons have any event listener. An example could be, there is a form with a button in it, but clicking the button is more interesting for the form rather than the button. As this button is nested within a form this event afer happening at the button would be bubbled up to the element that contains the button. In our case that containing element would be the div. This whole thing is called as event bubbling.
+
+### Dispatching events programatically
+
+The events we talk about are usually result of an external input, e.g. user click, mouse movement by the user, etc. These events come outside of the browser. Though sometimes events could also be fired within a browser, e.g. when a page loads bring the focus to a specific input field. This I have explained in the example dispatchEvent.html. It needs to be ensured that once the event is added to the element, the `dispatch` call needs to be made.
+
+### Removing event listeners
+
+```javascript
+const handleClick = function (e) {
+  console.log("click handled");
+};
+// we first add an event to an existing element and then only could remove event listener
+myButton.addEventListener("click", handleClick);
+myButton.removeEventListener("click", handleClick);
+```
+
+### Preventing default actions
+
+This topic needs to a bit of more study as I saw it a lot many times. I guess, it also helps page to maintain its scroll position when the back button is clicked on the browser.
+
+```javascript
+e.preventDefault();
+```
+
+### Calling you back
+
+```javascript
+loginBtn.addEventListener("click", doSomething());
+function doSomething() {}
+```
+
+In the above example `doSomething` is a callback function that is passed to another function and will be called at a later point of time. It will be called when the event listener detects an event.
+
+**Need to do a lot more reading on promises. The topic seems kind of crazy maze.**

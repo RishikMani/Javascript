@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dispatch event programatically</title>
+  </head>
+  <body>
+    <input type="text" id="textInput" value="This is placeholder value" />
+    <script>
+      //   const event = new Event("focus");
+      const newEvent = new CustomEvent("focus", {
+        detail: "This fires with data being sent from event.",
+      });
+      const element = document.getElementById("textInput");
+      element.focus();
+      element.addEventListener("focus", (e) => {
+        console.log(`${e.target.value}`);
+        e.target.value = e.detail;
+      });
+      element.dispatchEvent(newEvent);
+    </script>
+  </body>
+</html>
