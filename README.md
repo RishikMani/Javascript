@@ -618,3 +618,43 @@ function doSomething() {}
 In the above example `doSomething` is a callback function that is passed to another function and will be called at a later point of time. It will be called when the event listener detects an event.
 
 **Need to do a lot more reading on promises. The topic seems kind of crazy maze.**
+
+## Modules
+
+Modules are enabled by two keywords: `import` and `export`.
+
+### Exporting a module
+
+```javascript
+// store this content in a separate js file
+export const BASE_URL = "https://example.com";
+```
+
+As this would be a static file, it is not at all advisable to store sensitive information in such files. Modules can be created in one of the two ways: named export and default exports.
+
+#### Named exports
+
+The above example is a named export. Just add the keyword `export` in front of a varible, constant, function or a class.
+
+```javascript
+export function getStudentDetails(studentId) {}
+```
+
+Rather than putting `export` keyword in front of all such modules, it is a better practice to place an export at the end of the file and declare all such modules.
+
+```javascript
+export { BASE_URL, getStudentDetails };
+```
+
+#### Default exports
+
+```javascript
+export default function getStudentDetails(studentId) {} // just added default in named export
+```
+
+A file can have maximum one default export but can have many named export.
+
+```javascript
+export const BASE_URL = "https://example.com";
+export default function getStudentDetails(studentId) {}
+```
