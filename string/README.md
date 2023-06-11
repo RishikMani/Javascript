@@ -21,14 +21,14 @@ Remeber that to replace the placeholder with the value of the variable it should
 
 There are some interesting functions one can have a look at, but mostly they are abundantly clear by their names.
 
-1. `charAt()`
+### 1. charAt(int)
 
 ```javascript
 const NAME = "Rishik Mani";
 console.log(NAME.charAt(5)); // outputs 'k'
 ```
 
-2. `concat`
+### 2. concat(str)
 
 ```javascript
 const FIRST_NAME = "Rishik";
