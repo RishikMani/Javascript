@@ -31,3 +31,5 @@ variableOne = "This variable now holds a string.";
 ```
 
 To check what type of value is stored in a variable, the `typeof` operator can be used.
+
+If a variable is declared but no value is assigned to it, the variable by default contains value `undefined`.
