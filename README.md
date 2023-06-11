@@ -2,23 +2,8 @@
 
 This project is a very first attempt to get my hands dirty with Javascript. The project would start from very basic Javascript and would hopefully extend by including a couple of frameworks, i.e. Vue.Js. For learning purpose, the whole project would be divided into many different folders covering small concepts.
 
-### Using a template literal string
-
-```javascript
-let age = 34;
-let name = "Rishik Mani";
-
-// earlier this statement would have been written using + operator
-let description = `${name} is ${age} years of age.`;
-console.log(description);
-```
-
 ### Working with string functions
 
-There are some interesting functions one can have a look at, but mostly they are abundantly clear by their names.
-
-1. `charAt(int)`
-2. `concat(str, str)`
 3. `indexOf(char)`
 4. `split(,)`
 5. `substring(int, int)`
