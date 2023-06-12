@@ -66,3 +66,20 @@ console.log(NAME.substring(3, 7)); // outputs 'hik'
 ```
 
 However if the first index is larger than the second index, the function reverses them. `NAME.substring(10. 5)` would print `k Man` which is equal to `NAME.substring(5, 10)`.
+
+### 6. slice(int, int)
+
+It works exactly like `substring` but returns an empty string if the first index is greater than the second index.
+
+### 7. replace(str, str)
+
+It replaces the first string with the second string.
+
+```javascript
+const NAME = "Rishik Mani";
+console.log(NAME.replace("hik", "khi")); // outputs 'Riskhi Mani'
+```
+
+### 8. toLowerCase()
+
+### 9. toUpperCase()

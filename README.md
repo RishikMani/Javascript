@@ -2,13 +2,6 @@
 
 This project is a very first attempt to get my hands dirty with Javascript. The project would start from very basic Javascript and would hopefully extend by including a couple of frameworks, i.e. Vue.Js. For learning purpose, the whole project would be divided into many different folders covering small concepts.
 
-### Working with string functions
-
-6. `slice(int, int)`: It works exactly like `substring` but returns an empty string if the first index is greater than the second index.
-7. `replace(str, str)`: It replaces the first string with the second string.
-8. `toLowerCase()`
-9. `toUpperCase()`
-
 ## Data types
 
 Javascript has the following data types: object, undefined, boolean, number, bigint(n), string and symbol. If a variable is declared but no value is assigned to it, it would by default be an undefined type of variable.
