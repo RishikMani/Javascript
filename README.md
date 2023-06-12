@@ -4,16 +4,6 @@ This project is a very first attempt to get my hands dirty with Javascript. The 
 
 ### Working with string functions
 
-3. `indexOf(char)`
-4. `split(,)`
-5. `substring(int, int)`
-
-```javascript
-let name = "Rishik Mani";
-// the first index is larger than the second, so the function reverses them
-console.log(name.substring(10, 5));
-```
-
 6. `slice(int, int)`: It works exactly like `substring` but returns an empty string if the first index is greater than the second index.
 7. `replace(str, str)`: It replaces the first string with the second string.
 8. `toLowerCase()`

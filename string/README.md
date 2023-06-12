@@ -35,3 +35,34 @@ const FIRST_NAME = "Rishik";
 const LAST_NAME = "Mani";
 const FULL_NAME = FIRST_NAME.concat(" ", LAST_NAME); // outputs 'Rishik Mani'
 ```
+
+### 3. indexOf(char)
+
+Returns the first index of the occurence of the given character.
+
+```javascript
+const NAME = "Rishik Mani";
+console.log(NAME.indexOf("i")); // outputs 1
+```
+
+### 4. split(char)
+
+Splits the given string on the input character. The output of splitting a string is an array.
+
+```javascript
+const NAME = "Rishik Mani";
+console.log(NAME.split(" ")); // outputs [Rishik, Mani]
+```
+
+If no character is provided for the split, the output is the array of the string which is being split. In the above example, the output would be `[Rishik Mani]`.
+
+### 5. substring(int, int)
+
+It just returns the substring starting at the first input argument till the last charatcer before the second argument. The second argument is exclusive.
+
+```javascript
+const NAME = "Rishik Mani";
+console.log(NAME.substring(3, 7)); // outputs 'hik'
+```
+
+However if the first index is larger than the second index, the function reverses them. `NAME.substring(10. 5)` would print `k Man` which is equal to `NAME.substring(5, 10)`.
