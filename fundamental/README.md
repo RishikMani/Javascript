@@ -32,4 +32,18 @@ variableOne = "This variable now holds a string.";
 
 To check what type of value is stored in a variable, the `typeof` operator can be used.
 
+## Data types
+Javascript has the following data types:
+1. object: A javascript object is a collection of different key-value pairs.
+```javascript
+const CAR = {type:"Fiat", model:"500", color:"white"};
+```
+
+2. undefined
+3. boolean
+4. number
+5. bigint(n)
+6. string
+7. symbol
+
 If a variable is declared but no value is assigned to it, the variable by default contains value `undefined`.
