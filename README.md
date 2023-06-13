@@ -2,21 +2,7 @@
 
 This project is a very first attempt to get my hands dirty with Javascript. The project would start from very basic Javascript and would hopefully extend by including a couple of frameworks, i.e. Vue.Js. For learning purpose, the whole project would be divided into many different folders covering small concepts.
 
-## Loop
-
-The looping in Javascript gets a little interesting as we have some unique ways of looping over the values. There are some new loops as follows:
-
-1. for ... in: For this loop I am including an HTML page which shows a small example. Although, this is not extensively used, but could prove very helpful while debugging.
-2. for ... of
-
-```javascript
-const numbers = {1, 2, 3, 4};
-for (let number of numbers) {
-    console.log(number);
-}
-```
-
-This could also be used to iterate over all the characters in a string.
+A lot of very basic stuff is not included as it is almost similar in many other programming languages. I have tried to include concepts which might not be entirely different from similar concepts in other programming languages, but might have a different look and feel attached to them.
 
 ## Arrays
 
