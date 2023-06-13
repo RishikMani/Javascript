@@ -2,10 +2,6 @@
 
 This project is a very first attempt to get my hands dirty with Javascript. The project would start from very basic Javascript and would hopefully extend by including a couple of frameworks, i.e. Vue.Js. For learning purpose, the whole project would be divided into many different folders covering small concepts.
 
-## Data types
-
-Javascript has the following data types: object, undefined, boolean, number, bigint(n), string and symbol. If a variable is declared but no value is assigned to it, it would by default be an undefined type of variable.
-
 ## Loop
 
 The looping in Javascript gets a little interesting as we have some unique ways of looping over the values. There are some new loops as follows:
