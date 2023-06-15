@@ -11,10 +11,20 @@ class Student {
 }
 
 const student = new Student{'Rishik', 'Male'};
+```
 
+The properties of the class instance can be accessed in two ways:
+
+1. Using dot notation
+
+```javascript
 // modifying object using dot notation
-student.name = 'Rishik Mani';
+student.name = "Rishik Mani";
+```
 
+2. Using square bracket notation
+
+```javascript
 // modifying object using square bracket notation
-student['name'] = 'Rishik Mani';
+student["name"] = "Rishik Mani";
 ```
