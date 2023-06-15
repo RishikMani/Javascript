@@ -4,25 +4,6 @@ This project is a very first attempt to get my hands dirty with Javascript. The 
 
 A lot of very basic stuff is not included as it is almost similar in many other programming languages. I have tried to include concepts which might not be entirely different from similar concepts in other programming languages, but might have a different look and feel attached to them.
 
-## Making objects using constructor
-
-```javascript
-class Student {
-  constructor(name, gender) {
-    this.name = name;
-    this.gender = gender;
-  }
-}
-
-const student = new Student{'Rishik', 'Male'};
-
-// modifying object using dot notation
-student.name = 'Rishik Mani';
-
-// modifying object using square bracket notation
-student['name'] = 'Rishik Mani';
-```
-
 ## Functions
 
 ### Using rest parameters
