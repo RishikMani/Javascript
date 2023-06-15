@@ -68,4 +68,4 @@ But in the following way, first a copy of the array gets created and then the el
 const citiesShallowCopy = [...cities, "Noida"];
 ```
 
-The `...` operator is the spread opertaor which just copies all the content of the array `cities` and then `Noida` is appended to the last of the array `citiesShallowCopy`. In the similar way, an existing object could be copied into another object.
+The `...` operator is the spread opertaor which just copies all the content of the array `cities` and then `Noida` is appended to the last of the array `citiesShallowCopy`. In the similar way, an existing object coadded uld be copied into another object.
