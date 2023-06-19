@@ -4,7 +4,7 @@ Passing arguments to a function is fun as long as the number of arguments are le
 
 ### Setting default parameters
 
-Setting a parameter to default value in Javascript is what atleast Python does, but I don\t know why everytime I hear Javascript I go numb. It is just like `args` in Python.
+Setting a parameter to default value in Javascript is exactly like `*args` in Python.
 
 ```javascript
 function getName(firstName = "Rishik", lastName = "Mani") {
@@ -46,7 +46,7 @@ sumOfNumbers(1, 2, 3, 4, 5);
 
 **The arguments object resembles an array but is not an array. It only has access to array's _length_ property.**
 
-## Callback functions
+### Callback functions
 
 When a function is passed as an argument to another function, the function being passed as an argument is called the callback function while the function to which argument is being passed is called as the outer function.
 
@@ -63,9 +63,20 @@ function getTheUser(callback) {
 getTheUser(greetTheUser);
 ```
 
-## Hoisting
+### Hoisting
 
 Let us understand hoisting in Javascript using a very simple example and then move onto a bit more complex example using a function call to understand.
+
+```javascript
+function print() {
+  x = 5;
+  console.log(x);
+  var x;
+}
+print();
+```
+
+The above function would log `5` on the console but how does it happen when there was no declaration of `x`. In the function block the compiler later sees definition of `x`. This definition of `x` is pulled over to the top. This is called hoisting. _Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope._
 
 ```javascript
 x = 5;
@@ -73,4 +84,67 @@ console.log(x);
 let x;
 ```
 
-In Javascript, variables can be defined using `var`, `let` or `const`. In the above example, we directly initialized the value of `x`, without declaring it as a variable first. Surprisingly, there was no error. When the Javascript compiler sees a variable declared to which a value has beed assigned already in the same scope, it brings the declaration to top. It is as if the Javascript compiler sees the first statement to execute as `let x;`. This is called as _hoisting_.
+The above example would rather result in a `ReferenceError`. It is because variables defined with `let` and `const` are hoisted to the top of the block, _but not initialized_. The block of code is aware of the variable, but it cannot be used until it has been declared. While using a `const` variable before it is declared will result in a syntax error.
+
+```javascript
+var x = 5;
+console.log(x + y);
+var y = 7;
+```
+
+This example too will fail as Javascript does not hoist initializations.
+
+**But as a developer I find this very confusing and would rather never even try to do that. I cannot think of a use case where I would want to initialize the value first and later declare the variable.**
+
+### Defining function expressions
+
+```javascript
+const square = function (number) {
+  return number ** 2;
+};
+
+console.log(square(5));
+```
+
+Unlike function declarations, function expressions are not hoisted.
+
+### Writing anonymous functions as arrow functions
+
+```javascript
+const square = (number) => {
+  return number ** 2;
+};
+
+console.log(square(5));
+```
+
+Did you observe the very slight difference between a function expression and an arrow function? You just drop the keyword `function` and after the arguments parentheses include an arrow `=>` sign. It would still be called the same way as any other function expression.
+
+### Simplifying arrow functions
+
+If the arrow function contains either of a single parameter or just a single return statement, it could further be simplified. The `square` arrow function that we already defined, could be simplified as follows:
+
+```javascript
+const square = (number) => number ** 2;
+```
+
+Arrow functions do not have an arguments object. If one needs to write an arrow function that takes arbitrary number of arguments it could rather be done using `(...args)`.
+
+## Methods
+
+A function inside an object is called as method.
+
+```javascript
+const student = {
+  firstName: "",
+  lastName: "",
+  fullName: function (firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    console.log(`The full name of the student is ${firstName} ${lastName}.`);
+  },
+};
+
+student.fullName("Rishik", "Mani");
+console.log(`Student's first name is ${student.firstName}`);
+```
