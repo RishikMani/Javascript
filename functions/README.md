@@ -148,3 +148,46 @@ const student = {
 student.fullName("Rishik", "Mani");
 console.log(`Student's first name is ${student.firstName}`);
 ```
+
+### Chaining functions
+
+As in many other programming languages, one can chain multiple functions to be executed sequentially. e.g.
+
+```python
+name = 'rishik mani     '
+print(name.upper().strip())
+```
+
+This way the name first gets converted to uppercase and then the extra white spaces at the end of string are removed. In Javascript, the same can happen when the previous function in the sequential call returns a `this` from a method. This ensures that after each method call the output is the the object which contains the method from the next sequential call.
+
+```javascript
+const human = {
+  activity: undefined,
+  eat() {
+    this.activity = "eating";
+    return this;
+  },
+  sleep() {
+    this.activity = "sleeping";
+    return this;
+  },
+  thinking() {
+    this.activity = "thinking";
+    return this;
+  },
+};
+```
+
+To make the human think, eat and sleep, one could do
+
+```javascript
+let result = human.thinking();
+let result2 = human.eating(result);
+let result3 = human.sleeping(result2);
+```
+
+This all could just be written concisely in a single statement as
+
+```javascript
+result = human.thinking().eating().sleeping();
+```
