@@ -4,19 +4,6 @@ This project is a very first attempt to get my hands dirty with Javascript. The 
 
 A lot of very basic stuff is not included as it is almost similar in many other programming languages. I have tried to include concepts which might not be entirely different from similar concepts in other programming languages, but might have a different look and feel attached to them.
 
-### Static members
-
-```javascript
-class Number {
-  static number = 5;
-}
-let numInstance = new Number();
-```
-
-The above static property can only be accessed using the class itself, `Number.number`. If one tries to access this static property using an instance of the class `numInstance.number`, it will throw an error.
-
-**Note: I was expecting that the private property is also inaccessible from the instance of the class, but that is not the case. Verify it when revising this content.**
-
 ## Events
 
 If one has to add event attribute to a lot of HTML elements, it would at some time become very difficult to manage the code. It also violates the separation of concerns rule, that says that HTML and Javascript should be kept separate.

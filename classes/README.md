@@ -114,6 +114,19 @@ let numbers = new Numbers(15);
 numbers.#randomNumber === 20; // ideally this should break
 ```
 
+### Static members
+
+```javascript
+class Number {
+  static number = 5;
+}
+let numInstance = new Number();
+```
+
+The above static property can only be accessed using the class itself, `Number.number`. If one tries to access this static property using an instance of the class `numInstance.number`, it will return `undefined`.
+
 I still do not understand what and why it is happening, but running this on the console in Brave browser did not throw any error. On [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_class_fields), they say that `Code run in the Chrome console can access private properties outside the class. This is a DevTools-only relaxation of the JavaScript syntax restriction.`
 
-- [ ] Test the above once with Mozilla Firefox
+**Note: I was expecting that the private property is also inaccessible from the instance of the class, but that is not the case.**
+
+In both the cases above, I was expecting that accessing both private property and static property outside class would throw an exception, but that is not the case.
