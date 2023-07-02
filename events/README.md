@@ -40,6 +40,13 @@ d. `signal`:It takes an `AbortSignal` as its value.This signal consists of call 
 onClick(e){} // The e is called an event object
 ```
 
+The callback function could also be any other function.
+
+```javascript
+EventTarget.addEventListener("click", doSomething());
+function doSomething() {}
+```
+
 ### Listening on multiple targets
 
 In the [example](./eventbubbling.html), the div `button-group` is a div element that contains two buttons, but surprisingly none of the buttons have any event listener. An example could be, there is a form with a button in it, but clicking the button is more interesting for the form rather than the button. As this button is nested within a form, this event after happening at the button would be bubbled up to the element that contains the button. In our case, that containing element would be the div `button-group`. This whole thing is called as _event bubbling_.
@@ -84,4 +91,4 @@ If and only if there is an event already added to an element, only then the even
 
 On [mdn web docs](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) it says, the `preventDefault` method of the `Event` interface tells the user agent that if the event does not get explicitly handled, its default action should not be taken as it normally would be.
 
-[This]() example demonstrates how using preventDefault wont let the user check the checkbox. In this way, the default event of the checkbox does not happen.
+[This](./preventDefault.html) example demonstrates how using preventDefault wont let the user check the checkbox. In this way, the default event of the checkbox does not happen.

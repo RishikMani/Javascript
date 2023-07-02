@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Import module in HTML</title>
+  </head>
+  <body>
+    <p id="myText">
+      This paragraph will display content from a Javascript module once the
+      button is clicked.
+    </p>
+    <button id="myButton">Click to see how modules work in HTML!</button>
+    <script type="module">
+      import { BASE_URL } from "./module.js";
+
+      const myButton = document.getElementById("myButton");
+      const myText = document.getElementById("myText");
+
+      myButton.addEventListener("click", () => (myText.innerHTML = BASE_URL));
+    </script>
+  </body>
+</html>
