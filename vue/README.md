@@ -396,3 +396,62 @@ For rendering a list `v-for` directive can be used. It can take number,array,obj
 ```
 
 Similarly, it could be extended to arrays.
+
+## Adding style to components
+
+Vue components can also be styled. By default the CSS written inside <style> tag is global css and applied to all the components. Although, individual components can have their own style. If a parent component and a subcomponent contain conflicting styles, then the parent style takes precedence over child component style.
+
+```javascript
+// ChildComponent.vue
+<template>
+  <h1>This is a heading text.</h1>
+</template>
+<style>
+  h1 {
+    color: blue;
+  }
+</style>
+```
+
+```javascript
+//App.vue
+<script setup>
+  import ChildComponet from './components/ChildComponent.vue'
+</script>
+<template>
+  <h1>This is a heading from the parent component.</h1>
+  <ChildComponent/>
+</template>
+<style>
+  h1 {
+    color: Red;  // this color will override blue color of child component
+  }
+</style>
+```
+
+If the child component style is declared using `scoped`, `<style scoped>`, it will override conflicting globals.
+
+### Multiple style blocks
+
+The global style is always available to all the sub-components, but in the component besides the global style scoped style can also be created which applies only to the component itself and no sub-component.
+
+```javascript
+//App.vue
+<script setup>
+  import ChildComponet from './components/ChildComponent.vue'
+</script>
+<template>
+  <h1>This is a heading from the parent component.</h1>
+  <ChildComponent/>
+</template>
+<style>
+  h1 {
+    color: Red;  // this color will override blue color of child component
+  }
+</style>
+<style scoped>
+  h1 {
+    font: "XYZ"; // this font will be applied to the App component
+  }
+</style>
+```
