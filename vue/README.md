@@ -455,3 +455,131 @@ The global style is always available to all the sub-components, but in the compo
   }
 </style>
 ```
+
+### CSS Modules
+
+```javascript
+<script setup>
+  const items = [
+    {
+      name: 'apple',
+      price: 1.0,
+    },
+    {
+      name: 'asparagus',
+      price: 1.99,
+    },
+  ];
+</script>
+
+<template>
+  <div v-for="item in items">
+    <span :class="$style.item">{{ item.name }}</span>
+    : <span :class="$style.price">{{ item.price }}</span>
+  </div>
+</template>
+
+<style module>
+.item {
+  font-weight: bold;
+}
+.price {
+  font-style: italic;
+}
+</style>
+```
+
+So for two different attributes of an object different types of styles exist. This style can be bind by using `$style` object to class attributes. The `style` block is define with the keyword `module`.
+
+### v-bind in CSS
+
+The code in the `style` block is actually compiled by Vue, hence, can use some bindings and generate dynamic code.
+
+```javascript
+<script setup>
+  import { ref } from 'vue';
+  const rainbowColors = ref([
+    'red',
+    'orange',
+    'yellow',
+    'green',
+    'blue',
+    'indigo',
+    'violet',
+  ]);
+  const backgroundColor = ref('');
+</script>
+
+<template>
+  <input type="radio"
+  :id="color"
+  v-for="color in rainbowColors"
+  :value="color"
+  v-model="backgroundColor"
+  />
+  <div class="swatch"></div>
+  <h1>My favorite color is {{ backgroundColor }}</h1>
+</template>
+
+<style scoped>
+.swatch {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  border-radius: 50%;
+  border: 1px solid black;
+  background-color: v-bind(backgroundColor); // this v-bind will dynamically generate the background color
+}
+</style>
+```
+
+The `backgroundColor` is a varibale of `reactive` type. So any change in the value of this variable will cause the Vue components to be rendered after deriving the dynamic value. Selecting any value from the radio buttons will change the background color of the component.
+
+## Passing props
+
+In Vue data could be passed to a subcomponent by using attributes. These attributes are called as `props`. All the props passed to a component instance are passed as an object. Although, as many props could be passed to a sub-component, but Vue exclusively requires these properties to be defined in the child component.
+
+### Defining props with <script setup>
+
+```javascript
+<script setup>
+  const prop = defineProps(['firstName', 'secondName']);
+</script>
+
+<template>
+  <div>My full name is {{prop.firstName}} {{prop.secondName}}</div>
+</template>
+```
+
+If the props are defined in the `script` block using `setup`, the properties should be passed as an array argument to the function `defineProps`, which is available inside `<script setup>` and need not be imported. Inside the template the props defined are accessible as properties of defined property.
+
+### Defining props without assigning them to an object
+
+```javascript
+<script setup>
+  defineProps(['firstName', 'secondName']);
+</script>
+
+<template>
+  <div>My full name is {{firstName}} {{secondName}}</div>
+</template>
+```
+
+### Defining props with setup()
+
+```javascript
+<script>
+  export default {
+    props: ['firstName', 'lastName'],
+    setup(props) {
+      console.log(props.firstName);
+      console.log(props.lastName);
+    },
+  }
+</script>
+<template>
+  <div>My full name is {{ firstName }} {{ lastName }}.</div>
+</template>
+```
+
+Remember, `props` is passed to the `setup` function as an argument. In the template this props is available using just the names, but inside the setup function it can only be accessed using the props object.
